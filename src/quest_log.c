@@ -451,11 +451,11 @@ void TryStartQuestLogPlayback(u8 taskId)
 
     QL_EnableRecordingSteps();
     sNumScenes = 0;
-    for (i = 0; i < QUEST_LOG_SCENE_COUNT; i++)
-    {
-        if (gSaveBlock1Ptr->questLog[i].startType != 0)
-            sNumScenes++;
-    }
+    /* for (i = 0; i < QUEST_LOG_SCENE_COUNT; i++) */
+    /* { */
+    /*     if (gSaveBlock1Ptr->questLog[i].startType != 0) */
+    /*         sNumScenes++; */
+    /* } */
 
     if (sNumScenes != 0)
     {
