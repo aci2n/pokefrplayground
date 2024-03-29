@@ -102,6 +102,11 @@ ViridianCity_EventScript_TutorialOldMan::
 	lock
 	faceplayer
 	goto_if_set FLAG_BADGE01_GET, ViridianCity_EventScript_AskIfTeachyTVHelpful
+
+	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
+	msgbox ViridianCity_Text_ThatWasEducationalTakeThis2
+	giveitem ITEM_TEACHY_TV
+
 	goto_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_TutorialCompleted
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_TutorialStart
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_TutorialNotReady
@@ -200,7 +205,7 @@ ViridianCity_EventScript_RoadBlocked::
 	end
 
 ViridianCity_Movement_WalkDown::
-	walk_down
+	walk_up
 	step_end
 
 ViridianCity_EventScript_TutorialTriggerLeft::

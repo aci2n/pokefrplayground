@@ -899,6 +899,8 @@ static void CB2_WaitFadeBeforeSetUpIntro(void)
 {
     if (!UpdatePaletteFade())
         SetMainCallback2(CB2_SetUpIntro);
+		else
+				DebugPrintf("waiting for fade before intro");
 }
 
 static void LoadCopyrightGraphics(u16 charBase, u16 screenBase, u16 palOffset)
@@ -915,6 +917,7 @@ static void SerialCB_CopyrightScreen(void)
 
 static bool8 SetUpCopyrightScreen(void)
 {
+	  DebugPrintf("setUpCopyrightScreen %s", "tas");
     switch (gMain.state)
     {
     case 0:
@@ -930,12 +933,12 @@ static bool8 SetUpCopyrightScreen(void)
         DmaFill32(3, 0, OAM, OAM_SIZE);
         DmaFill16(3, 0, PLTT + sizeof(vu16), PLTT_SIZE - sizeof(vu16));
         ResetPaletteFade();
-        LoadCopyrightGraphics(0 * BG_CHAR_SIZE, 7 * BG_SCREEN_SIZE, BG_PLTT_ID(0));
+        /* LoadCopyrightGraphics(0 * BG_CHAR_SIZE, 7 * BG_SCREEN_SIZE, BG_PLTT_ID(0)); */
         ScanlineEffect_Stop();
         ResetTasks();
         ResetSpriteData();
         FreeAllSpritePalettes();
-        BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_WHITEALPHA);
+        /* BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_WHITEALPHA); */
         SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_16COLOR | BGCNT_SCREENBASE(7));
         EnableInterrupts(INTR_FLAG_VBLANK);
         SetVBlankCallback(VBlankCB_Copyright);
@@ -943,20 +946,17 @@ static bool8 SetUpCopyrightScreen(void)
         SetSerialCallback(SerialCB_CopyrightScreen);
         GameCubeMultiBoot_Init(&sGcmb);
         // fallthrough
-    default:
-        UpdatePaletteFade();
-        gMain.state++;
-        GameCubeMultiBoot_Main(&sGcmb);
-        break;
-    case 140:
+    case 1:
+				DebugPrintf("inside case 1");
         GameCubeMultiBoot_Main(&sGcmb);
         if (sGcmb.gcmb_field_2 != 1)
         {
-            BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
+            /* BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK); */
             gMain.state++;
         }
         break;
-    case 141:
+    case 2:
+				DebugPrintf("inside case 2");
         if (!UpdatePaletteFade())
         {
             gMain.state++;
@@ -978,9 +978,12 @@ static bool8 SetUpCopyrightScreen(void)
                 SetSerialCallback(SerialCB);
             }
             return FALSE;
-        }
+        } else {
+						DebugPrintf("inside case 2: palete fade pending");
+				}
         break;
-    case 142:
+    case 3:
+				DebugPrintf("inside case 3");
         ResetSerial();
         SetMainCallback2(CB2_WaitFadeBeforeSetUpIntro);
         break;
@@ -1122,7 +1125,7 @@ static void IntroCB_Init(struct IntroSequenceData * this)
         break;
     case 1:
         if (!IsDma3ManagerBusyWithBgCopy())
-            SetIntroCB(this, IntroCB_GF_OpenWindow);
+            SetIntroCB(this, IntroCB_ExitToTitleScreen);
         break;
     }
 }

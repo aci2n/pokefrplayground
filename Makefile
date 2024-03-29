@@ -359,6 +359,9 @@ leafgreen_rev1_modern: ; @$(MAKE) GAME_VERSION=LEAFGREEN GAME_REVISION=1 MODERN=
 
 modern: ; @$(MAKE) MODERN=1
 
+tags:
+	etags **/*.{c,h,inc}
+
 ###################
 ### Symbol file ###
 ###################

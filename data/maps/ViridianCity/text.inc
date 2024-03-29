@@ -37,7 +37,7 @@ ViridianCity_Text_GoShoppingInPewterOccasionally::
     .string "VIRIDIAN FOREST when I go.$"
 
 ViridianCity_Text_ThisIsPrivateProperty::
-    .string "I absolutely forbid you from\n"
+    .string "agarrame los 2 huevos flaco\n"
     .string "going through here!\p"
     .string "This is private property!$"
 
@@ -60,6 +60,11 @@ ViridianCity_Text_ShowYouHowToCatchMons::
 
 ViridianCity_Text_ThatWasEducationalTakeThis::
     .string "There! Now tell me, that was\n"
+    .string "educational, was it not?\p"
+    .string "And here, take this, too.$"
+
+ViridianCity_Text_ThatWasEducationalTakeThis2::
+    .string "buenas buenas\n"
     .string "educational, was it not?\p"
     .string "And here, take this, too.$"
 

@@ -242,6 +242,7 @@ void StartTimer1(void)
 void SeedRngAndSetTrainerId(void)
 {
     u16 val = REG_TM1CNT_L;
+		DebugPrintf("RNG seed: %u", val);
     SeedRng(val);
     REG_TM1CNT_H = 0;
     gTrainerId = val;

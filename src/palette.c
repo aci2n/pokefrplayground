@@ -123,6 +123,13 @@ u8 UpdatePaletteFade(void)
         result = UpdateFastPaletteFade();
     else
         result = UpdateHardwarePaletteFade();
+		/* DebugPrintf("UpdatePaletteFade: " */
+		/* 						"sPlttBufferTransferPending: %u, " */
+		/* 						"gPaletteFade.mode: %u, " */
+		/* 						"result: %u", */
+		/* 						sPlttBufferTransferPending, */
+		/* 						gPaletteFade.mode, */
+		/* 						result); */
     sPlttBufferTransferPending = gPaletteFade.multipurpose1 | dummy;
     return result;
 }
