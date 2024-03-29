@@ -137,6 +137,8 @@ void player_step(u8 direction, u16 newKeys, u16 heldKeys)
 {
     struct ObjectEvent *playerObjEvent = &gObjectEvents[gPlayerAvatar.objectEventId];
 
+		/* DebugPrintf("player_step %u %u %u", direction, newKeys, heldKeys); */
+
     HandleWarpArrowSpriteHideShow(playerObjEvent);
     if (!gPlayerAvatar.preventStep && !TryUpdatePlayerSpinDirection())
     {

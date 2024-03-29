@@ -206,8 +206,10 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     FieldClearPlayerInput(&gFieldInputRecord);
     gFieldInputRecord.dpadDirection = input->dpadDirection;
 
-    if (CheckForTrainersWantingBattle() == TRUE)
+    if (CheckForTrainersWantingBattle() == TRUE) {
+				DebugPrintf("found trainer wanting battle");
         return TRUE;
+		}
 
     if (TryRunOnFrameMapScript() == TRUE)
         return TRUE;
@@ -220,8 +222,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         RunMassageCooldownStepCounter();
         IncrementResortGorgeousStepCounter();
         IncrementBirthIslandRockStepCount();
-        if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
-        {
+        if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE) {
+						DebugPrintf("started step based script");
             gFieldInputRecord.tookStep = TRUE;
             return TRUE;
         }
@@ -266,8 +268,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         }
     }
 
-    if (input->pressedAButton && TryStartInteractionScript(&position, metatileBehavior, playerDirection) == TRUE)
-    {
+    if (input->pressedAButton && TryStartInteractionScript(&position, metatileBehavior, playerDirection) == TRUE) {
+				DebugPrintf("started interaction script %s", __LINE__);
         gFieldInputRecord.pressedAButton = TRUE;
         return TRUE;
     }
@@ -617,16 +619,26 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
 
 static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileBehavior, u16 direction)
 {
-    if (TryStartCoordEventScript(position) == TRUE)
+    if (TryStartCoordEventScript(position) == TRUE) {
+				DebugPrintf("started coord event script");
         return TRUE;
-    if (TryStartWarpEventScript(position, metatileBehavior) == TRUE)
+		}
+    if (TryStartWarpEventScript(position, metatileBehavior) == TRUE) {
+				DebugPrintf("started warp event script");
+				return TRUE;
+		}
+    if (TryStartMiscWalkingScripts(metatileBehavior) == TRUE) {
+				DebugPrintf("started misc walking script");
+				return TRUE;
+		}
+    if (TryStartStepCountScript(metatileBehavior) == TRUE) {
+				DebugPrintf("started step count script");
         return TRUE;
-    if (TryStartMiscWalkingScripts(metatileBehavior) == TRUE)
+		}
+    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior) && UpdateRepelCounter() == TRUE) {
+				DebugPrintf("repel event script");
         return TRUE;
-    if (TryStartStepCountScript(metatileBehavior) == TRUE)
-        return TRUE;
-    if (!(gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_FORCED) && !MetatileBehavior_IsForcedMovementTile(metatileBehavior) && UpdateRepelCounter() == TRUE)
-        return TRUE;
+		}
     return FALSE;
 }
 

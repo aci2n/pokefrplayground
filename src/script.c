@@ -88,6 +88,7 @@ bool8 RunScriptCommand(struct ScriptContext *ctx)
     //if (ctx->mode == SCRIPT_MODE_STOPPED)
     //    return FALSE;
 
+		/* DebugPrintf("RunScriptCommand: mode=%u", ctx->mode); */
     switch (ctx->mode)
     {
     case SCRIPT_MODE_STOPPED:

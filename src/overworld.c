@@ -1390,6 +1390,7 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
     struct FieldInput fieldInput;
 
+		/* DebugPrintf("DoCB1_Overworld: %u, %u", newKeys, heldKeys); */
     QL_TryRunActions();
     UpdatePlayerAvatarTransitionState();
     FieldClearPlayerInput(&fieldInput);
@@ -1397,8 +1398,8 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
     FieldInput_HandleCancelSignpost(&fieldInput);
     if (!ArePlayerFieldControlsLocked())
     {
-        if (ProcessPlayerFieldInput(&fieldInput) == TRUE)
-        {
+        if (ProcessPlayerFieldInput(&fieldInput) == TRUE) {
+						DebugPrintf("ProcessPlayerFieldInput returned TRUE");
             if (gQuestLogPlaybackState == QL_PLAYBACK_STATE_RECORDING)
                 QL_RecordFieldInput(&gFieldInputRecord);
             LockPlayerFieldControls();
@@ -1691,6 +1692,7 @@ void CB2_ContinueSavedGame(void)
     UnlockPlayerFieldControls();
     gFieldCallback2 = NULL;
     gExitStairsMovementDisabled = TRUE;
+		DebugPrintf("game warp: %u", UseContinueGameWarp());
     if (UseContinueGameWarp() == TRUE)
     {
         ClearContinueGameWarpStatus();
@@ -1923,6 +1925,7 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 inLink)
 
 static bool32 ReturnToFieldLocal(u8 *state)
 {
+		DebugPrintf("ReturnToFieldLocal: state=%u", *state);
     switch (*state)
     {
     case 0:

@@ -1888,6 +1888,8 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
     }
 #undef i
 
+    DebugPrintf("SpawnObjectEventOnReturnToField: %u, %d, %d", objectEventId, x, y);
+
     objectEvent = &gObjectEvents[objectEventId];
     objectEvent++;objectEvent--; // fakematch
     subspriteTables = NULL;
