@@ -301,7 +301,6 @@ static u16 GenerateFishingEncounter(const struct WildPokemonInfo * info, u8 rod)
 
 static bool8 DoWildEncounterRateDiceRoll(u16 encounterRate)
 {
-		return FALSE;
     if (WildEncounterRandom() % MAX_ENCOUNTER_RATE < encounterRate)
         return TRUE;
     return FALSE;

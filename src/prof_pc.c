@@ -38,6 +38,7 @@ u16 GetPokedexCount(void)
 static const u8 *GetProfOaksRatingMessageByCount(u16 count)
 {
     gSpecialVar_Result = FALSE;
+		count = KANTO_DEX_COUNT;
 
     if (count < 10)
         return PokedexRating_Text_LessThan10;

@@ -1,6 +1,7 @@
 PokedexRating_EventScript_RateInPerson::
 	goto_if_questlog EventScript_ReleaseEnd
 	special QuestLog_CutRecording
+	setflag FLAG_OAK_SAW_DEX_COMPLETION
 	call_if_set FLAG_OAK_SAW_DEX_COMPLETION, PokedexRating_EventScript_DexCompleteIntro
 	call_if_unset FLAG_OAK_SAW_DEX_COMPLETION, PokedexRating_EventScript_NormalIntro
 	call PokedexRating_EventScript_Rate
@@ -46,7 +47,6 @@ PokedexRating_EventScript_Rate::
 	msgbox PokedexRating_Text_SeenXOwnedY
 	call_if_unset FLAG_OAKS_RATING_IS_VIA_PC, PokedexRating_EventScript_SetTextColor
 	call PokedexRating_EventScript_ShowRatingMsg
-	goto_if_eq VAR_0x800A, FALSE, PokedexRating_EventScript_EndRating  @ National Dex not enabled
 	setvar VAR_0x8004, 1
 	specialvar VAR_RESULT, GetPokedexCount
 	copyvar VAR_0x8008, VAR_0x8005
@@ -71,6 +71,7 @@ PokedexRating_EventScript_DexIncomplete::
 PokedexRating_EventScript_DexComplete::
 	setflag FLAG_OAK_SAW_DEX_COMPLETION
 	msgbox PokedexRating_Text_YouveCompletedDex
+	special ShowDiploma
 	goto PokedexRating_EventScript_EndRating
 	end
 

@@ -123,7 +123,7 @@ bool16 HasAllKantoMons(void)
 bool16 HasAllMons(void)
 {
     u16 i;
-
+		return TRUE;
     // -1 excludes Mew
     for (i = 0; i < KANTO_DEX_COUNT - 1; i++)
     {
