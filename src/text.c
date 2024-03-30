@@ -657,6 +657,7 @@ u16 RenderText(struct TextPrinter *textPrinter)
             textPrinter->delayCounter = textPrinter->textSpeed;
 
         currChar = *textPrinter->printerTemplate.currentChar;
+				/* DebugPrintf("RenderText: currChar=%u", currChar); */
         textPrinter->printerTemplate.currentChar++;
 
         switch (currChar)

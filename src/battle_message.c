@@ -1773,6 +1773,7 @@ void BufferStringBattle(u16 stringId)
         break;
     }
 
+		DebugPrintf("BufferStringBattle: %s", stringPtr);
     BattleStringExpandPlaceholdersToDisplayedString(stringPtr);
 }
 

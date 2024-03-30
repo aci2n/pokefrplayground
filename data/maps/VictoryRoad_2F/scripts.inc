@@ -11,20 +11,14 @@ VictoryRoad_2F_OnLoad::
 	end
 
 VictoryRoad_2F_EventScript_SetRockBarrier1::
-	setmetatile 13, 10, METATILE_Cave_RockBarrier_Top, 1
-	setmetatile 13, 11, METATILE_Cave_RockBarrier_Bottom, 1
 	return
 
 VictoryRoad_2F_EventScript_SetRockBarrier2::
-	setmetatile 33, 16, METATILE_Cave_RockBarrier_Top, 1
-	setmetatile 33, 17, METATILE_Cave_RockBarrier_Bottom, 1
 	return
 
 VictoryRoad_2F_EventScript_FloorSwitch1::
 	lockall
 	goto_if_eq VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER1, 100, VictoryRoad_2F_EventScript_FloorSwitch1AlreadyPressed
-	setmetatile 13, 10, METATILE_Cave_Floor_Ledge_Top, 0
-	setmetatile 13, 11, METATILE_Cave_Floor_Ledge_Bottom, 0
 	playse SE_ICE_BREAK
 	special DrawWholeMapView
 	waitse
@@ -40,8 +34,6 @@ VictoryRoad_2F_EventScript_FloorSwitch1AlreadyPressed::
 VictoryRoad_2F_EventScript_FloorSwitch2::
 	lockall
 	goto_if_eq VAR_MAP_SCENE_VICTORY_ROAD_2F_BOULDER2, 100, VictoryRoad_2F_EventScript_FloorSwitch2AlreadyPressed
-	setmetatile 33, 16, METATILE_Cave_Floor_Ledge_Top, 0
-	setmetatile 33, 17, METATILE_Cave_Floor_Ledge_Bottom, 0
 	playse SE_ICE_BREAK
 	special DrawWholeMapView
 	waitse

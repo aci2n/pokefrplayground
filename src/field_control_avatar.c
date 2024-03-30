@@ -602,17 +602,20 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (MetatileBehavior_IsFastWater(metatileBehavior) == TRUE && PartyHasMonWithSurf() == TRUE)
-        return EventScript_CurrentTooFast;
-    if (FlagGet(FLAG_BADGE05_GET) == TRUE && PartyHasMonWithSurf() == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    /* if (MetatileBehavior_IsFastWater(metatileBehavior) == TRUE && PartyHasMonWithSurf() == TRUE) */
+    /*     return EventScript_CurrentTooFast; */
+    if (IsPlayerFacingSurfableFishableWater() == TRUE) {
+				DebugPrintf("event use surf");
         return EventScript_UseSurf;
+		}
 
     if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
     {
-        if (FlagGet(FLAG_BADGE07_GET) == TRUE && IsPlayerSurfingNorth() == TRUE)
-            return EventScript_Waterfall;
-        else
-            return EventScript_CantUseWaterfall;
+        /* if (FlagGet(FLAG_BADGE07_GET) == TRUE && IsPlayerSurfingNorth() == TRUE) */
+				DebugPrintf("event use waterfall");
+				return EventScript_Waterfall;
+        /* else */
+            /* return EventScript_CantUseWaterfall; */
     }
     return NULL;
 }

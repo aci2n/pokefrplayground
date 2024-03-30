@@ -116,6 +116,14 @@ Route23_EventScript_BadgeGuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement VAR_0x8009, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
+	setflag FLAG_BADGE01_GET
+	setflag FLAG_BADGE02_GET
+	setflag FLAG_BADGE03_GET
+	setflag FLAG_BADGE04_GET
+	setflag FLAG_BADGE05_GET
+	setflag FLAG_BADGE06_GET
+	setflag FLAG_BADGE07_GET
+	setflag FLAG_BADGE08_GET
 	switch VAR_TEMP_1
 	case 1, Route23_EventScript_CheckBoulderBadgeTrigger
 	case 2, Route23_EventScript_CheckCascadeBadgeTrigger

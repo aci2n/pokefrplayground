@@ -27,6 +27,7 @@ Route7_EastEntrance_EventScript_GuardTrigger::
 	textcolor NPC_TEXT_COLOR_MALE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
+	setflag FLAG_GOT_TEA
 	goto_if_set FLAG_GOT_TEA, Route7_EastEntrance_EventScript_GiveTea
 	msgbox Route7_EastEntrance_Text_ThirstyOnGuardDuty
 	closemessage

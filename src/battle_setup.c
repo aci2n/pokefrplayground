@@ -320,10 +320,10 @@ void StartMarowakBattle(void)
 {
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndMarowakBattle;
-    if (CheckBagHasItem(ITEM_SILPH_SCOPE, 1))
+    if (1)
     {
         gBattleTypeFlags = BATTLE_TYPE_GHOST | BATTLE_TYPE_GHOST_UNVEILED;
-        CreateMonWithGenderNatureLetter(gEnemyParty, SPECIES_MAROWAK, 30, 31, MON_FEMALE, NATURE_SERIOUS, 0);
+        CreateMonWithGenderNatureLetter(gEnemyParty, SPECIES_MEWTWO, 30, 31, MON_GENDERLESS, NATURE_SERIOUS, 0);
     }
     else
     {

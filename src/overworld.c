@@ -967,6 +967,7 @@ void SetFlashLevel(s32 flashLevel)
 
 u8 Overworld_GetFlashLevel(void)
 {
+		return 0;
     return gSaveBlock1Ptr->flashLevel;
 }
 
