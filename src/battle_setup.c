@@ -1017,7 +1017,7 @@ void PlayTrainerEncounterMusic(void)
         case TRAINER_ENCOUNTER_MUSIC_GIRL:
         case TRAINER_ENCOUNTER_MUSIC_TWINS:
             music = MUS_ENCOUNTER_GIRL;
-            /* break; */
+						break;
         case TRAINER_ENCOUNTER_MUSIC_MALE:
         case TRAINER_ENCOUNTER_MUSIC_INTENSE:
         case TRAINER_ENCOUNTER_MUSIC_COOL:
@@ -1027,7 +1027,7 @@ void PlayTrainerEncounterMusic(void)
         case TRAINER_ENCOUNTER_MUSIC_INTERVIEWER:
         case TRAINER_ENCOUNTER_MUSIC_RICH:
             music = MUS_ENCOUNTER_BOY;
-            /* break; */
+            break;
         default:
             music = MUS_ENCOUNTER_ROCKET;
             break;

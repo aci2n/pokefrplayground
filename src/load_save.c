@@ -160,15 +160,15 @@ void SavePlayerParty(void)
     gSaveBlock1Ptr->playerPartyCount = gPlayerPartyCount;
 
     for (i = 0; i < PARTY_SIZE; i++) {
-				struct Pokemon *mon = &gPlayerParty[i];
-				mon->level = 90;
-				mon->hp = 500;
-				mon->maxHP = 500;
-				mon->attack = 300;
-				mon->defense = 300;
-				mon->speed = 300;
-				mon->spAttack = 300;
-				mon->spDefense = 300;
+				/* struct Pokemon *mon = &gPlayerParty[i]; */
+				/* mon->level = 60; */
+				/* mon->hp = 300; */
+				/* mon->maxHP = 300; */
+				/* mon->attack = 300; */
+				/* mon->defense = 300; */
+				/* mon->speed = 300; */
+				/* mon->spAttack = 300; */
+				/* mon->spDefense = 300; */
         gSaveBlock1Ptr->playerParty[i] = gPlayerParty[i];
 		}
 }

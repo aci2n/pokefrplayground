@@ -2978,6 +2978,9 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
             }
         }
     }
+				/* always allow fly */
+		AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 2 + CURSOR_OPTION_FIELD_MOVES);
+
     if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, CURSOR_OPTION_SWITCH);
     if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))

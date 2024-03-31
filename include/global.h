@@ -820,4 +820,6 @@ struct MapPosition
 extern struct SaveBlock1* gSaveBlock1Ptr;
 extern u8 gReservedSpritePaletteCount;
 
+/* int backtrace(void** buffer, int size); */
+
 #endif // GUARD_GLOBAL_H
