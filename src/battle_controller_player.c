@@ -23,6 +23,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
+#include "i2n_swap.h"
 
 static void PlayerHandleGetMonData(void);
 static void PlayerHandleSetMonData(void);
@@ -307,6 +308,10 @@ static void HandleInputChooseAction(void)
     {
         SwapHpBarsWithHpText();
     }
+		else if (i2n_swap_HandleInputChooseAction())
+		{
+				// do nothing
+		}
 }
 
 // Unused
