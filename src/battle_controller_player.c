@@ -581,6 +581,9 @@ void HandleInputChooseMove(void)
             gBattlerControllerFuncs[gActiveBattler] = HandleMoveSwitching;
         }
     }
+		else if (i2n_swap_HandleInputChooseMove(PlayerBufferExecCompleted,
+																						HandleInputChooseAction)) {
+		}
 }
 
 // not used

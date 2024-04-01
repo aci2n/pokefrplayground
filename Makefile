@@ -57,7 +57,7 @@ override CFLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-
 LIBPATH := -L ../../tools/agbcc/lib
 else
 CC1             := $(shell $(MODERNCC) --print-prog-name=cc1) -quiet
-override CFLAGS += -mthumb -mthumb-interwork -O2 -mcpu=arm7tdmi -mabi=apcs-gnu -fno-toplevel-reorder -fno-aggressive-loop-optimizations -Wno-pointer-to-int-cast -gdwarf-4 -g3 -Og
+override CFLAGS += -mthumb -mthumb-interwork -mcpu=arm7tdmi -mabi=apcs-gnu -fno-toplevel-reorder -fno-aggressive-loop-optimizations -Wno-pointer-to-int-cast -gdwarf-4 -Og
 LIBPATH := -L $(shell dirname $(shell $(MODERNCC) --print-file-name=libgcc.a)) -L $(shell dirname $(shell $(MODERNCC) --print-file-name=libc.a))
 endif
 
@@ -268,7 +268,7 @@ $(C_BUILDDIR)/%.o: c_dep = $(shell [[ -f $(C_SUBDIR)/$*.c ]] && $(SCANINC) -I in
 endif
 
 ifeq ($(DINFO),1)
-override CFLAGS += -g
+override CFLAGS += -gdwarf-4 -Og
 endif
 
 $(C_BUILDDIR)/%.o : $(C_SUBDIR)/%.c $$(c_dep)
@@ -359,8 +359,8 @@ leafgreen_rev1_modern: ; @$(MAKE) GAME_VERSION=LEAFGREEN GAME_REVISION=1 MODERN=
 
 modern: ; @$(MAKE) MODERN=1
 
-run:
-	mgba-qt -g pokefirered_modern.gba
+run: $(ROM)
+	mgba-qt -g "$(ROM)"
 
 tags:
 	etags **/*.{c,h}
