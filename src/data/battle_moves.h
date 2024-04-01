@@ -4617,7 +4617,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
 		[MOVE_I2N_SWAP] =
 		{
-        .effect = EFFECT_SKILL_SWAP,
+        .effect = EFFECT_SWAP,
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,

@@ -235,6 +235,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectCalmMind               @ EFFECT_CALM_MIND
 	.4byte BattleScript_EffectDragonDance            @ EFFECT_DRAGON_DANCE
 	.4byte BattleScript_EffectCamouflage             @ EFFECT_CAMOUFLAGE
+	.4byte BattleScript_EffectSwap                   @ EFFECT_SWAP
 
 BattleScript_EffectHit::
 	jumpifnotmove MOVE_SURF, BattleScript_HitFromAtkCanceler
@@ -2495,6 +2496,16 @@ BattleScript_EffectSkillSwap::
 	ppreduce
 	accuracycheck BattleScript_ButItFailed, NO_ACC_CALC_CHECK_LOCK_ON
 	tryswapabilities BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSWAPPEDABILITIES
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectSwap::
+	attackcanceler
+	attackstring
+	tryswap BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	printstring STRINGID_PKMNSWAPPEDABILITIES

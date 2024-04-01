@@ -148,3 +148,13 @@ bool8 i2n_swap_HandleInputChooseMove(void (*PlayerBufferExecCompleted)(),
 
 		return TRUE;
 }
+
+void i2n_swap_Cmd_tryswap()
+{
+		struct BattlePokemon const temp = gBattleMons[gBattlerAttacker];
+		gBattleMons[gBattlerAttacker] = gBattleMons[gBattlerTarget];
+		gBattleMons[gBattlerTarget] = temp;
+
+		// all other commands seem to do this
+		gBattlescriptCurrInstr += 5;
+}

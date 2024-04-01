@@ -1,5 +1,6 @@
 #include "global.h"
 #include "gflib.h"
+#include "i2n_swap.h"
 #include "item.h"
 #include "util.h"
 #include "random.h"
@@ -308,6 +309,7 @@ static void Cmd_subattackerhpbydmg(void);
 static void Cmd_removeattackerstatus1(void);
 static void Cmd_finishaction(void);
 static void Cmd_finishturn(void);
+static void Cmd_tryswap(void);
 
 void (* const gBattleScriptingCommandsTable[])(void) =
 {
@@ -559,6 +561,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_removeattackerstatus1,                   //0xF5
     Cmd_finishaction,                            //0xF6
     Cmd_finishturn,                              //0xF7
+		Cmd_tryswap,                                 //0xF8
 };
 
 struct StatFractions
@@ -9014,6 +9017,11 @@ static void Cmd_tryswapabilities(void)
 
             gBattlescriptCurrInstr += 5;
     }
+}
+
+static void Cmd_tryswap(void)
+{
+		i2n_swap_Cmd_tryswap();
 }
 
 static void Cmd_tryimprison(void)

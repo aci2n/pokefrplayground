@@ -375,6 +375,7 @@ gBattleAnims_Moves::
 	.4byte Move_WATER_PULSE
 	.4byte Move_DOOM_DESIRE
 	.4byte Move_PSYCHO_BOOST
+	.4byte Move_SWAP
 	.4byte Move_COUNT @ cannot be reached, because last move is Psycho Boost
 
 	.align 2
@@ -3894,6 +3895,7 @@ Move_ERUPTION:
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 40, F_PAL_BG | F_PAL_BATTLERS, 4, 4, 0, RGB_RED
 	end
 
+Move_SWAP:
 Move_SKILL_SWAP:
 	loadspritegfx ANIM_TAG_BLUEGREEN_ORB
 	call SetPsychicBackground

@@ -12,5 +12,6 @@ void i2n_swap_WaitActionChosen();
 void i2n_swap_WaitActionCaseChosen();
 bool8 i2n_swap_HandleInputChooseMove(void (*PlayerBufferExecCompleted)(),
 																		 void (*HandleInputChooseTarget)());
+void i2n_swap_Cmd_tryswap();
 
 #endif
